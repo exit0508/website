@@ -6,8 +6,6 @@ const notion = new Client({
 });
 const DATABASE_ID = import.meta.env.VITE_NOTION_DATABASE_ID as string;
 
-console.log(notion, DATABASE_ID);
-
 export default async function fetchAllPosts() {
   try {
     if (notion) {

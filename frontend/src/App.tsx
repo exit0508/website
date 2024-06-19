@@ -7,8 +7,8 @@ import About from "./pages/About";
 import Portfolio from "./pages/Portfolio";
 
 function App() {
-  const result = fetchAllPosts();
-  console.log(result);
+  //const result = fetchAllPosts();
+  //console.log(result);
   return (
     <div>
       <Header />
