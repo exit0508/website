@@ -2,33 +2,11 @@ import { Route, Switch } from "wouter";
 import Header from "./components/Header";
 import Home from "./pages/Home";
 import About from "./pages/About";
-import Portfolio from "./pages/Portfolio";
-import { useState, useEffect } from "react";
+import Projects from "./pages/Projects";
+import { useProjects } from "./contexts";
 
 function App() {
-  const [post, setPosts] = useState<any>(null);
-  const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    const fetchPosts = async () => {
-      try {
-        setLoading(true);
-        const response = await fetch("/hello");
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const posts = await response.json();
-        console.log(posts);
-        setPosts(posts);
-        setLoading(false);
-      } catch (err: any) {
-        setError(err.message ? err.message : "An unknown error occurred");
-        setLoading(false);
-      }
-    };
-    fetchPosts();
-  }, []);
+  const { loading } = useProjects();
 
   return (
     <div>
@@ -41,7 +19,7 @@ function App() {
           <Switch>
             <Route path="/" component={Home} />
             <Route path="/about" component={About} />
-            <Route path="/portfolio" component={Portfolio} />
+            <Route path="/projects" component={Projects} />
           </Switch>
         </>
       )}

@@ -12,6 +12,12 @@ export default defineConfig({
         rewrite: (path) => path.replace(/^\/hello/, ""),
         secure: false,
       },
+      "/projects": {
+        target: "http://localhost:3000/projects",
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/projects/, ""),
+        secure: false,
+      },
     },
   },
 });

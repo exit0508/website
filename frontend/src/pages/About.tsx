@@ -6,9 +6,8 @@ const About = () => {
       <Title />
       <div>
         <div>
-          <p>
-            <h1>Motivation</h1>
-          </p>
+          <h1>Motivation</h1>
+          <p>aaaa</p>
         </div>
         <div>
           <h1>Skills</h1>

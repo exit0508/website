@@ -19,12 +19,12 @@ app.get("/hello", (c) => {
   return c.json({ msg: "Hello Hono!" });
 });
 
-const Posts = await notion.databases.query({
+const Projects = await notion.databases.query({
   database_id: DATABASE_ID,
 });
 
-app.get("/posts", (c) => {
-  return c.json(Posts);
+app.get("/projects", (c) => {
+  return c.json({ projects: Projects });
 });
 
 const port = 3000;
