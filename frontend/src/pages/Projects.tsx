@@ -3,7 +3,7 @@ import { useProjects } from "../contexts";
 
 const Projects = () => {
   const { projects } = useProjects();
-  console.log("aaaa", typeof projects);
+  console.log("aaaa", projects);
   return (
     <>
       <h1>Projects</h1>
