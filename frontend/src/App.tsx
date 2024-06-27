@@ -9,20 +9,21 @@ function App() {
   const { loading } = useProjects();
 
   return (
-    <div>
-      {loading ? (
-        <h1>Error</h1>
-      ) : (
-        <>
-          <Header />
-
-          <Switch>
-            <Route path="/" component={Home} />
-            <Route path="/about" component={About} />
-            <Route path="/projects" component={Projects} />
-          </Switch>
-        </>
-      )}
+    <div className="w-full h-screen bg-bg dark:bg-bgDark text-black dark:text-white">
+      <Header />
+      <div className="container px-4 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16">
+        {loading ? (
+          <h1>Error</h1>
+        ) : (
+          <>
+            <Switch>
+              <Route path="/" component={Home} />
+              <Route path="/about" component={About} />
+              <Route path="/projects" component={Projects} />
+            </Switch>
+          </>
+        )}
+      </div>
     </div>
   );
 }

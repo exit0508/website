@@ -1,11 +1,11 @@
 const Title = () => {
   return (
     <>
-      <h1>Yurina Deguchi</h1>
-      <p>
-        Aspiring designer and front-end developer passionate about creating in
-        the Plureverse
-      </p>
+      {/* <h1 className="text-2xl">Yurina Deguchi</h1> */}
+      <h2 className="text-xl">
+        I'm an aspiring designer and front-end developer passionate about
+        creating in the Plureverse :)
+      </h2>
     </>
   );
 };

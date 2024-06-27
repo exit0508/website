@@ -1,10 +1,12 @@
 import Title from "./Title";
 const Hero = () => {
   return (
-    <>
-      <Title />
-      <h1>This is a portfolio website.</h1>
-    </>
+    <section>
+      <div className="container">
+        <h1 className="text-3xl">こんにちは！</h1>
+        <Title />
+      </div>
+    </section>
   );
 };
 
