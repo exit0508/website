@@ -30,10 +30,9 @@ interface NotionPostType {
   id: string;
   title: string;
   thumbnail?: string;
-  created?: string;
-  date?: string;
+  projectDate?: string;
   tags?: string[];
-  lastUpdate?: string;
+  publicLink?: string;
 }
 
 app.get("/hello", (c) => {
@@ -73,10 +72,15 @@ const fetchAllPosts = async (
         projectPosts.push({
           id: post.id,
           title: getTitle(post),
+          thumbnail: getThumbnailUrl(post),
+          projectDate: getProjectDate(post),
+          tags: getTags(post),
+          publicLink: getPublicLink(post),
         });
       });
-      //console.log(projectPosts);
+      console.log("aaa", projectPosts);
       return projectPosts;
+      //return response.results;
     }
   } catch (error: unknown) {
     if (isNotionClientError(error)) {
@@ -89,11 +93,47 @@ const fetchAllPosts = async (
 
 //いちいち型制約を書かなくても良いようにしたい
 const getTitle = (page: PageObjectResponse): string => {
-  console.log(page.properties);
   const title = page.properties.Title;
   return title.type === "title" && title.title.length > 0
     ? title.title[0].plain_text
     : "";
+};
+
+const getThumbnailUrl = (page: PageObjectResponse): string => {
+  const thumbnailUrl = page.properties.Thumbnail;
+  if (thumbnailUrl.type === "files" && thumbnailUrl.files.length > 0) {
+    switch (thumbnailUrl.files[0].type) {
+      case "external":
+        return thumbnailUrl.files[0].external.url;
+      case "file":
+        return thumbnailUrl.files[0].file.url;
+    }
+  }
+  return ""; // デフォルトの返り値
+};
+
+const getTags = (page: PageObjectResponse): string[] => {
+  const tags = page.properties.Tags;
+  return tags.type === "multi_select" && tags.multi_select.length > 0
+    ? tags.multi_select.map((val) => val.name)
+    : [];
+};
+
+const getProjectDate = (page: PageObjectResponse): string => {
+  const projectDate = page.properties.Date;
+  return projectDate.type === "rich_text" &&
+    projectDate.rich_text[0].type === "text"
+    ? projectDate.rich_text[0].text.content
+    : "";
+};
+
+const getPublicLink = (page: PageObjectResponse): string => {
+  const Url = page.public_url;
+  if (Url) {
+    return Url;
+  } else {
+    return "";
+  }
 };
 
 app.get("/projects", async (c) => {
