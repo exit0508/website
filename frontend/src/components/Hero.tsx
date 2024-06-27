@@ -1,9 +1,9 @@
 import Title from "./Title";
 const Hero = () => {
   return (
-    <section>
+    <section className="mb-20">
       <div className="container">
-        <h1 className="text-3xl">こんにちは！</h1>
+        <p className="text-3xl mb-3">こんにちは！</p>
         <Title />
       </div>
     </section>

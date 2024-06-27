@@ -138,7 +138,7 @@ const getPublicLink = (page: PageObjectResponse): string => {
 
 app.get("/projects", async (c) => {
   const projects = await fetchAllPosts(DATABASE_ID);
-  return c.json({ projects: projects });
+  return c.json(projects);
 });
 
 const port = 3000;

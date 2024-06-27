@@ -6,17 +6,27 @@ import {
   useState,
 } from "react";
 
-interface Project {
+// export interface ProjectProps {
+//   id: string;
+//   title: string;
+//   date: string;
+// }
+
+export interface ProjectProps {
+  id: string;
   title: string;
-  date: string;
+  thumbnail?: string;
+  projectDate?: string;
+  tags?: string[];
+  publicLink?: string;
 }
 
-interface ProjectContextProps {
-  projects: Project[];
+export interface ProjectsContextProps {
+  projects: ProjectProps[];
   loading: boolean;
 }
 
-const ProjectContext = createContext<ProjectContextProps | undefined>(
+const ProjectContext = createContext<ProjectsContextProps | undefined>(
   undefined
 );
 

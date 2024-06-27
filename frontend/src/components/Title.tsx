@@ -1,10 +1,10 @@
 const Title = () => {
   return (
     <>
-      {/* <h1 className="text-2xl">Yurina Deguchi</h1> */}
+      <h1 className="text-2xl">Yurina Deguchi</h1>
       <h2 className="text-xl">
-        I'm an aspiring designer and front-end developer passionate about
-        creating in the Plureverse :)
+        Aspiring designer and front-end developer passionate about creating in
+        the Plureverse :)
       </h2>
     </>
   );

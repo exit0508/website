@@ -1,12 +1,15 @@
-import Card from "../components/Card";
+import { useEffect, useState } from "react";
+import CardList from "../components/CardList";
 import { useProjects } from "../contexts";
 
 const Projects = () => {
-  //const { projects } = useProjects();
-  //console.log("aaaa", projects);
+  const { projects } = useProjects();
+  console.log("aaaa", projects);
+
   return (
     <>
-      <Card />
+      <h2 className="text-5xl mb-8">Projects</h2>
+      <CardList projects={projects} />
     </>
   );
 };

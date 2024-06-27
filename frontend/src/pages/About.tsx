@@ -4,16 +4,15 @@ const About = () => {
   return (
     <>
       <Title />
-      <div>
+      <div className="mt-10">
         <div>
-          <h1>Motivation</h1>
-          <p>aaaa</p>
+          <h1 className="text-2xl mb-10">Motivation</h1>
         </div>
         <div>
-          <h1>Skills</h1>
+          <h1 className="text-2xl mb-10">Skills</h1>
         </div>
         <div>
-          <h1>Timeline</h1>
+          <h1 className="text-2xl mb-10">Timeline</h1>
         </div>
       </div>
     </>
