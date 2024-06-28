@@ -25,7 +25,8 @@ export default defineConfig({
         secure: false,
       },
       "/projects": {
-        target: "http://localhost:3000/projects",
+        //target: "http://localhost:3000/projects",
+        target: "https://www.exit0508.com/projects",
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/projects/, ""),
         secure: false,

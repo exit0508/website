@@ -1,5 +1,6 @@
 import { serve } from "@hono/node-server";
 import { Hono } from "hono";
+import { handle } from "hono/vercel";
 import {
   Client,
   LogLevel,
@@ -18,7 +19,8 @@ import type {
 
 dotenv.config();
 
-const app = new Hono();
+export const runtime = "edge";
+const app = new Hono().basePath("/projects");
 
 const notion = new Client({
   auth: process.env.NOTION_TOKEN as string,
@@ -141,10 +143,13 @@ app.get("/projects", async (c) => {
   return c.json(projects);
 });
 
-const port = 3000;
-console.log(`Server is running on port ${port}`);
+// const port = 3000;
+// console.log(`Server is running on port ${port}`);
 
-serve({
-  fetch: app.fetch,
-  port,
-});
+// serve({
+//   fetch: app.fetch,
+//   port,
+// });
+
+export const GET = handle(app);
+export const POST = handle(app);
